@@ -123,3 +123,103 @@ export const verifyEmailAction = async (token: string, email: string) => {
 };
 
 // forgot password action
+export const resetPasswordAction = async (email: string) => {
+  if (!email) {
+    return { status: false, error: "Email is Need!" };
+  }
+  try {
+    const res = await axios.post(
+      `${process.env.BACKEND_URL}/auth/forgot-password`,
+      { email: email }
+    );
+    if (res.status === 200) {
+      return { success: true, message: res.data.message };
+    }
+    return { success: false, error: "OTP Send failed." };
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      const backendMsg = error.response?.data?.message;
+      if (backendMsg) {
+        return { success: false, error: backendMsg };
+      }
+      return {
+        success: false,
+        error: error.message || "Network error. Please try again.",
+      };
+    }
+    return { success: false, error: "Something went wrong. Try again later." };
+  }
+};
+
+// verify otp action
+export const verifyOtpAction = async (
+  otp: string,
+  email: string,
+  formType: string
+) => {
+  if (!otp || !email) {
+    return { success: false, error: "OTP or Email is missing!" };
+  }
+  try {
+    const res = await axios.post(`${process.env.BACKEND_URL}/auth/otp-verify`, {
+      otp,
+      email,
+      formType,
+    });
+    if (res.status === 200) {
+      return { success: true, message: res.data.message };
+    }
+    return { success: false, error: "OTP verification failed." };
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      const backendMsg = error.response?.data?.message;
+      if (backendMsg) {
+        return { success: false, error: backendMsg };
+      }
+      return {
+        success: false,
+        error: error.message || "Network error. Please try again.",
+      };
+    }
+    return { success: false, error: "Something went wrong. Try again later." };
+  }
+};
+
+// change password action
+export const changePassAction = async (
+  oldPassword: string,
+  newPassword: string,
+  email: string,
+  otp: string
+) => {
+  if (!oldPassword || !newPassword || !email || !otp) {
+    return { success: false, error: "All fields are required!" };
+  }
+  try {
+    const res = await axios.post(
+      `${process.env.BACKEND_URL}/auth/reset-password`,
+      {
+        oldPassword,
+        newPassword,
+        email,
+        otp,
+      }
+    );
+    if (res.status === 200) {
+      return { success: true, message: res.data.message };
+    }
+    return { success: false, error: "Change password failed." };
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      const backendMsg = error.response?.data?.message;
+      if (backendMsg) {
+        return { success: false, error: backendMsg };
+      }
+      return {
+        success: false,
+        error: error.message || "Network error. Please try again.",
+      };
+    }
+    return { success: false, error: "Something went wrong. Try again later." };
+  }
+};

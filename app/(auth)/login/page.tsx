@@ -1,5 +1,5 @@
 import LoginForm from "@/components/auth/login-form";
-import { Button } from "@/components/ui/button";
+import SocialAuth from "@/components/socialAuth";
 import {
   Card,
   CardContent,
@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/card";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { FcGoogle } from "react-icons/fc";
 
 export default function page() {
   return (
@@ -46,13 +45,7 @@ export default function page() {
               </Link>
             </p>
           </div>
-          <Button
-            variant="outline"
-            className="w-full inline-flex items-center cursor-pointer"
-          >
-            <FcGoogle />
-            Login with Google
-          </Button>
+          <SocialAuth />
         </CardFooter>
       </Card>
     </div>

@@ -1,4 +1,4 @@
-import ResetPasswordForm from "@/components/auth/reset-password-form";
+import ResetPasswordMethod from "@/components/auth/reset-password-method";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 
@@ -27,7 +27,7 @@ export default function page() {
               How do you want to reset your password? Choose the method that
               works best for you.
             </p>
-            <ResetPasswordForm />
+            <ResetPasswordMethod />
           </div>
         </div>
       </div>

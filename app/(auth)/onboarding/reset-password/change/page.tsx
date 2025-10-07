@@ -1,4 +1,4 @@
-import ResetPasswordForm from "@/components/auth/reset-password-form";
+import ChangePassForm from "@/components/auth/change-pass-form";
 import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
 
@@ -12,21 +12,21 @@ export default function page() {
         <div className="sm:border sm:border-border-1 w-full max-w-[550px] lg:px-8 rounded-[20px] mx-auto sm:bg-white">
           <div className="sm:px-8 sm:py-8 py-12">
             <Link
-              href="/onboarding/reset-password"
+              href="/login"
               className="text-sm text-text-1 mb-4 flex gap-3 items-center"
             >
               <div className="flex justify-center items-center border border-border-1 rounded-full w-7 h-7">
                 <ChevronLeft className="h-4 w-4" />
               </div>
-              Back to OTP Method
+              Back to Login
             </Link>
-            <h2 className="lg:text-3xl font-semibold">Forgot Password?</h2>
+            <h2 className="lg:text-3xl font-semibold">Reset Password</h2>
             <p className="text-sm lg:text-base text-text-2 mt-2">
-              If you have an account with us you will receive an email with 6
-              digit OTP for verification.
+              Fill out the form to start your business. We&apos;re here to
+              support you every step of the way.
             </p>
             <div className="md:mt-5">
-              <ResetPasswordForm />
+              <ChangePassForm />
             </div>
           </div>
         </div>

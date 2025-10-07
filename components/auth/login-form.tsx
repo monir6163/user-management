@@ -17,7 +17,7 @@ import {
 } from "@/lib/zod/loginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import ButtonLoader from "../button-loader";
@@ -29,6 +29,8 @@ export default function LoginForm() {
   const { push } = useRouter();
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
   const form = useForm<LoginSchema>({
     mode: "all",
     resolver: zodResolver(loginSchema),
@@ -41,7 +43,7 @@ export default function LoginForm() {
     const result = await loginAction(values);
     if (result.success) {
       setSuccess(result.message || "Logged in successfully!");
-      push("/dashboard");
+      push(callbackUrl);
     } else {
       setError(result.error || "Login failed. Please try again.");
     }

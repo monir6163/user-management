@@ -27,7 +27,7 @@ A comprehensive user management system built with Next.js, TypeScript, and Tailw
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone <https://github.com/monir6163/user-management>
    ```
 2. Navigate to the project directory:
    ```bash
@@ -64,8 +64,19 @@ A comprehensive user management system built with Next.js, TypeScript, and Tailw
 
 For any questions or inquiries, please contact [monirhossain6163@gmail.com](mailto:monirhossain6163@gmail.com)
 
-## Login Credentials for Testing
+## Login Credentials
+
+## User Role
 
 - Email: test@example.com
 - Password: password123
-  Feel free to use these credentials to test the login functionality.
+
+  ## Admin Role
+
+- Email: admin@example.com
+- Password: admin123
+
+  ## Super Admin Role
+
+- Email: superadmin@example.com
+- Password: superadmin123
