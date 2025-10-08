@@ -4,7 +4,6 @@ export default async function page() {
   return (
     <div>
       <h1 className="text-3xl font-bold underline">Dashboard</h1>
-      <pre>{JSON.stringify(session, null, 2)}</pre>
     </div>
   );
 }

@@ -1,15 +1,14 @@
-export default function ProtectedLayout({
+import { auth } from "@/auth";
+import DashboardProvider from "@/providers/dashboardProvider";
+import { User } from "next-auth";
+export default async function ProtectedLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const session = await auth();
+  const user = session?.user as User;
   return (
     <>
-      {/* <Header /> */}
-      <div className="flex h-screen pt-[64px]">
-        {/* <SideBar /> */}
-        <div className="w-full h-screen">
-          <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">{children}</div>
-        </div>
-      </div>
+      <DashboardProvider user={user}>{children}</DashboardProvider>
     </>
   );
 }

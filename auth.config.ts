@@ -4,6 +4,7 @@
 import { NextAuthConfig } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import Google from "next-auth/providers/google";
+import { tokenTime } from "./constants/constant";
 
 const BACKEND_URL = process.env.BACKEND_URL;
 
@@ -77,5 +78,9 @@ export default {
       session.user = token.user as any;
       return session;
     },
+  },
+  session: {
+    strategy: "jwt",
+    maxAge: tokenTime.sessionMaxAge,
   },
 } satisfies NextAuthConfig;
